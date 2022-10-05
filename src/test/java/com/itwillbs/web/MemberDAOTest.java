@@ -1,6 +1,8 @@
 package com.itwillbs.web;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -86,7 +88,7 @@ public class MemberDAOTest {
 		
 	}
 	
-	@Test
+//	@Test
 	public void 회원정보_업데이트() {
 		// 아이디와 비밀번호 일치할 경우 다른 회원정보 수정
 		MemberVO vo = new MemberVO();
@@ -99,6 +101,30 @@ public class MemberDAOTest {
 			log.info("회원정보 수정이 완료되었습니다.");
 		} else {
 			log.info("회원정보 수정이 실패했습니다.");
+		}
+	}
+	
+	@Test
+	public void 회원정보_삭제() {
+		MemberVO dvo = new MemberVO();
+		dvo.setUserid("아이디");
+		dvo.setUserpw("비밀번호");
+		int result = dao.deleteMember(dvo);
+		
+		if(result==1) {
+			log.info("회원정보를 삭제했습니다.");
+		} else {
+			log.info("회원정보 삭제에 실패했습니다.");
+		}
+		
+	}
+	
+	@Test
+	public void 회원목록리스트_조회() {
+		List<MemberVO> memberList = dao.getMemberList();
+		
+		for(MemberVO vo: memberList) {
+			log.info("아이디: "+vo.getUserid()+", 이름 :"+vo.getUsername());
 		}
 	}
 

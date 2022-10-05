@@ -1,6 +1,8 @@
 package com.itwillbs.persistence;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -107,6 +109,26 @@ public class MemberDAOImpl implements MemberDAO{
 		// result == 0(수정 실패)/1(수정 성공)
 		return result;
 	}
+
+
+	@Override
+	public Integer deleteMember(MemberVO dvo) {
+		log.info("MemberDAOImpl - deleteMember(userid, userpw)");
+		
+		int result = sqlSession.delete(NAMESPACE+".deleteMember", dvo);
+		// result == 0(삭제 실패)/1(삭제 성공)
+		return result;
+	}
+
+
+	@Override
+	public List<MemberVO> getMemberList() {
+		List<MemberVO> memberList 
+			= sqlSession.selectList(NAMESPACE+".getMemberList");
+				  		// ↳ vo타입의 객체를 List에 순서대로 저장해줌↳
+		return memberList;
+	}
+	
 	
 }
 
