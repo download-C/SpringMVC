@@ -41,13 +41,13 @@ public class MemberDAOTest {
 		log.info("@@@@ dao.getTime(): "+dao.getTime());
 	}
 	
-//	@Test
+	@Test
 	public void 회원가입테스트() {
 		MemberVO vo = new MemberVO();
-		vo.setUserid("아이디");
-		vo.setUserpw("비밀번호");
-		vo.setUsername("이름");
-		vo.setUseremail("이메일");
+		vo.setUserid("admin");
+		vo.setUserpw("1234");
+		vo.setUsername("홍길동");
+		vo.setUseremail("admin@naver.com");
 		
 //		dao.insertMember(vo);
 	}
@@ -104,7 +104,7 @@ public class MemberDAOTest {
 		}
 	}
 	
-	@Test
+//	@Test
 	public void 회원정보_삭제() {
 		MemberVO dvo = new MemberVO();
 		dvo.setUserid("아이디");
